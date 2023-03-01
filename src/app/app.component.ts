@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { ɵangular_packages_platform_browser_dynamic_testing_testing_b } from '@angular/platform-browser-dynamic/testing';
 import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import {
+  EMPTY,
   Observable,
   of, 
 } from 'rxjs';
-import {map, tap, distinctUntilChanged} from 'rxjs/operators';
+import {map, tap, distinctUntilChanged, filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +23,11 @@ export class AppComponent {
   // 3. if no params, return empty string (clear input with "")
 
   name$ = this.activateRoute.queryParams.pipe(
+    tap(params=>console.log('params='+JSON.stringify(params))),
     map(params => params['name']),
-    map(x => {return x}))
+    filter((x) => x == undefined),
+    map(y => {''}));
+
 
   // name$ = this.activateRoute.url.pipe(
   //   map(url => url),
@@ -34,18 +39,25 @@ export class AppComponent {
 
   }
 
-  btnGoWelcome(name: string){
+  btnGoWelcome(name?: string){
     if (name)
       this.router.navigate(['/welcome'], {queryParams: {name: name}});
     else 
       this.router.navigate(['/welcome']);
   }
   
-  btnGoProducts(name: string){
+  btnGoProducts(name?: string){
     if (name)
       this.router.navigate(['/products'], {queryParams: {name: name}});
     else
       this.router.navigate(['/products']);
+  }  
+
+  btnGoAbout(name?: string){
+    if (name)
+      this.router.navigate(['/about'], {queryParams: {name: name}});
+    else
+      this.router.navigate(['/about']);
   }  
 
   

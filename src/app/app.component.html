@@ -5,8 +5,15 @@
     <li><a class='nav-link' routerLink='/products'>Product List</a></li>
   </ul>
   <input #name type="text" [value]="(name$ | async)" placeholder="name"/>
-  <button (click)="btnGoWelcome(name.value)">Go to Welcome Page</button>
-  <button (click)="btnGoProducts(name.value)">Go to Products Page</button>
+  <br/>
+  <button (click)="btnGoWelcome()" style="background-color: green;">Open Welcome</button>
+  <button (click)="btnGoWelcome('test1')">Open Welcome Param</button>
+  <br/>
+  <button (click)="btnGoProducts()" style="background-color: green;">Open Products</button>
+  <button (click)="btnGoProducts('test2')">Open Products Param</button>
+  <br/>
+  <button (click)="btnGoAbout()">Open About</button>
+  <button (click)="btnGoAbout('test3')">Open About Param</button>
 </nav>
 <div class='container'>
   <router-outlet></router-outlet>
