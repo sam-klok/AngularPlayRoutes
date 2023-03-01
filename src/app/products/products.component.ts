@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activateRoute: ActivatedRoute, private router: Router){}
 
   ngOnInit(): void {
+  }
+
+  btnClear(){
+    // we already on products page
+    // this should clear text input
+    this.router.navigate(['/products']);  
   }
 
 }

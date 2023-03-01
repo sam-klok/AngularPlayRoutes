@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   Observable,
   of,
@@ -11,18 +12,21 @@ import {
 })
 export class WelcomeComponent implements OnInit {
 
-  //info$: Observable<string | null>;
+    //test$: Observable<string | null>;
+    test$ =  of('Initial version');
 
-    info$ =  of('Initial version');
-    
-  constructor() {
-    //this.info$ = of('Initial version');
+  constructor(private activateRoute: ActivatedRoute, private router: Router){
+    //this.test$ = of('Initial version');
    }
 
   ngOnInit(): void {
-    //this.info$ = of('Test text');
+    //this.test$ = of('Test text');
   }
 
-
+  btnClear(){
+    // we already on welcome page
+    // this should clear text input
+    this.router.navigate(['/welcome']);  
+  }
 
 }
