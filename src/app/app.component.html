@@ -4,6 +4,10 @@
     <li><a class='nav-link' routerLink='/welcome'>Home</a></li>
     <li><a class='nav-link' routerLink='/products'>Product List</a></li>
   </ul>
+  <input #name type="text" [value]="(url$ | async)" placeholder="url"/>
+  <br/>
+  <input #name type="text" [value]="(param$ | async)" placeholder="parameter"/>
+  <br/>
   <input #name type="text" [value]="(name$ | async)" placeholder="name"/>
   <br/>
   <button (click)="btnGoWelcome()" style="background-color: green;">Open Welcome</button>

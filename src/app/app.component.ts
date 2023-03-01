@@ -17,16 +17,36 @@ export class AppComponent {
   pageTitle$ = of('Angular Play Routes');
   //name$ = of('Just a test'); // this code works
 
+  url$ = this.activateRoute.url.pipe(
+    map(value => {
+      return JSON.stringify(value);
+    })
+  )
+
+  param$ = this.activateRoute.params.pipe(
+    map(value => {
+      return JSON.stringify(value);
+    })
+  )
+
+  name$ = this.activateRoute.url.pipe(
+    map(value => {
+      //console.log('value ='+value);
+      return JSON.stringify(value);
+    }),
+    
+  );
+
   // Logic: 
   // 1. if route /welcome or /products - continue
   // 2. if there are params - ignore, return nothing
   // 3. if no params, return empty string (clear input with "")
 
-  name$ = this.activateRoute.queryParams.pipe(
-    tap(params=>console.log('params='+JSON.stringify(params))),
-    map(params => params['name']),
-    filter((x) => x == undefined),
-    map(y => {''}));
+  // name$ = this.activateRoute.queryParams.pipe(
+  //   tap(params=>console.log('params='+JSON.stringify(params))),
+  //   map(params => params['name']),
+  //   filter((x) => x == undefined),
+  //   map(y => {''}));
 
 
   // name$ = this.activateRoute.url.pipe(
