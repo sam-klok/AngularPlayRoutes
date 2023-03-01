@@ -4,19 +4,19 @@
     <li><a class='nav-link' routerLink='/welcome'>Home</a></li>
     <li><a class='nav-link' routerLink='/products'>Product List</a></li>
   </ul>
-  URL: <input #name type="text" [value]="(url$ | async)" placeholder="url" style="position:fixed ;left:80px;width:200px"/>
+  <table>
+    <tr><td>URL: </td><td><input #name type="text" [value]="(url$ | async)" placeholder="url" /></td></tr>
+    <tr><td>Parameter:</td><td><input #name type="text" [value]="(param$ | async)" placeholder="parameter" /></td></tr>
+    <tr><td>Name:</td><td><input #name type="text" [value]="(name$ | async)" placeholder="name" /></td></tr>
+  </table>
   <br/>
-  Parameter: <input #name type="text" [value]="(param$ | async)" placeholder="parameter" style="position:fixed ;left:80px;width:200px"/>
-  <br/>
-  Name: <input #name type="text" [value]="(name$ | async)" placeholder="name" style="position:fixed ;left:80px;width:200px"/>
-  <br/>
-  <button (click)="btnGoWelcome()" style="background-color: green;">Open Welcome</button>
+  <button (click)="btnGoWelcome()" style="background-color: green;width:120px">Open Welcome</button>
   <button (click)="btnGoWelcome('test1')">Open Welcome Param</button>
   <br/>
-  <button (click)="btnGoProducts()" style="background-color: green;">Open Products</button>
+  <button (click)="btnGoProducts()" style="background-color: green;width:120px">Open Products</button>
   <button (click)="btnGoProducts('test2')">Open Products Param</button>
   <br/>
-  <button (click)="btnGoAbout()">Open About</button>
+  <button (click)="btnGoAbout()" style="width:120px">Open About</button>
   <button (click)="btnGoAbout('test3')">Open About Param</button>
 </nav>
 <div class='container'>

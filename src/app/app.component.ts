@@ -19,7 +19,7 @@ export class AppComponent {
 
   
   // getting current URL .. 
-  url$ = this.activateRoute.queryParams.pipe(
+  url$ = this.activatedRoute.queryParams.pipe(
     map(() => {
       console.log("router.url="+this.router.url); // full URL with params
       return this.router.url.split('?')[0] ;
@@ -28,7 +28,7 @@ export class AppComponent {
 
 
   // geting value parameter 'name' - works
-  param$ = this.activateRoute.queryParams.pipe(
+  param$ = this.activatedRoute.queryParams.pipe(
     map(params => {
       console.log('params='+JSON.stringify(params));
       console.log("router.url="+this.router.url);
@@ -52,7 +52,7 @@ export class AppComponent {
   // )
 
 
-  name$ = this.activateRoute.url.pipe(
+  name$ = this.activatedRoute.url.pipe(
     map(value => {
       //console.log('value ='+value);
       return JSON.stringify(value);
@@ -78,7 +78,7 @@ export class AppComponent {
   // );
 
 
-  constructor(private activateRoute: ActivatedRoute, private router: Router){
+  constructor(private activatedRoute: ActivatedRoute, private router: Router){
 
   }
 

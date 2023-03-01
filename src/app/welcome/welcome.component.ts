@@ -15,7 +15,7 @@ export class WelcomeComponent implements OnInit {
     //test$: Observable<string | null>;
     test$ =  of('Initial version');
 
-  constructor(private activateRoute: ActivatedRoute, private router: Router){
+  constructor(private activatedRoute: ActivatedRoute, private router: Router){
     //this.test$ = of('Initial version');
    }
 
