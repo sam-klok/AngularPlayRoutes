@@ -26,7 +26,7 @@ export class AppComponent {
   // geting value parameter 'name' - works
   param$ = this.activateRoute.queryParams.pipe(
     map(params => {
-      console.log('params='+params);
+      console.log('params='+JSON.stringify(params));
       if (params['name'])
         return params['name'];
       else 
