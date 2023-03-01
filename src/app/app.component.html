@@ -4,11 +4,11 @@
     <li><a class='nav-link' routerLink='/welcome'>Home</a></li>
     <li><a class='nav-link' routerLink='/products'>Product List</a></li>
   </ul>
-  <input #name type="text" [value]="(url$ | async)" placeholder="url"/>
+  URL: <input #name type="text" [value]="(url$ | async)" placeholder="url" style="position:fixed ;left:80px;width:200px"/>
   <br/>
-  <input #name type="text" [value]="(param$ | async)" placeholder="parameter"/>
+  Parameter: <input #name type="text" [value]="(param$ | async)" placeholder="parameter" style="position:fixed ;left:80px;width:200px"/>
   <br/>
-  <input #name type="text" [value]="(name$ | async)" placeholder="name"/>
+  Name: <input #name type="text" [value]="(name$ | async)" placeholder="name" style="position:fixed ;left:80px;width:200px"/>
   <br/>
   <button (click)="btnGoWelcome()" style="background-color: green;">Open Welcome</button>
   <button (click)="btnGoWelcome('test1')">Open Welcome Param</button>

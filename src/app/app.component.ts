@@ -15,18 +15,23 @@ import {map, tap, distinctUntilChanged, filter} from 'rxjs/operators';
 })
 export class AppComponent {
   pageTitle$ = of('Angular Play Routes');
-  //name$ = of('Just a test'); // this code works
+  //name$ = of('Just a test'); // this test code works
 
-  url$ = this.activateRoute.url.pipe(
-    map(value => {
-      return JSON.stringify(value);
+  
+  // getting current URL .. 
+  url$ = this.activateRoute.queryParams.pipe(
+    map(() => {
+      console.log("router.url="+this.router.url); // full URL with params
+      return this.router.url.split('?')[0] ;
     })
   )
+
 
   // geting value parameter 'name' - works
   param$ = this.activateRoute.queryParams.pipe(
     map(params => {
       console.log('params='+JSON.stringify(params));
+      console.log("router.url="+this.router.url);
       if (params['name'])
         return params['name'];
       else 
