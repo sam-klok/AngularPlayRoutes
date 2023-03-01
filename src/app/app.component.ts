@@ -12,22 +12,23 @@ import {map, tap, distinctUntilChanged} from 'rxjs/operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  pageTitle = 'Angular Play Routes';
-
+  pageTitle$ = of('Angular Play Routes');
+  //name$ = of('Just a test'); // this code works
 
   // Logic: 
   // 1. if route /welcome or /products - continue
   // 2. if there are params - ignore, return nothing
   // 3. if no params, return empty string (clear input with "")
 
-  name$ = this.activateRoute.url.pipe(
-    map(url => url),
-    map(UrlSegment=> {return UrlSegment})
-  );
+  name$ = this.activateRoute.queryParams.pipe(
+    map(params => params['name']),
+    map(x => {return x}))
 
-  //name$ = this.activateRoute.url.pipe(url=>url);
-  //name$ = this.activateRoute.queryParams.pipe(map(params => params['name']))
-    
+  // name$ = this.activateRoute.url.pipe(
+  //   map(url => url),
+  //   map(UrlSegment => { return UrlSegment[0].path})
+  // );
+
 
   constructor(private activateRoute: ActivatedRoute, private router: Router){
 
