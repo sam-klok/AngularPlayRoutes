@@ -23,11 +23,29 @@ export class AppComponent {
     })
   )
 
-  param$ = this.activateRoute.params.pipe(
-    map(value => {
-      return JSON.stringify(value);
+  // geting value parameter 'name' - works
+  param$ = this.activateRoute.queryParams.pipe(
+    map(params => {
+      console.log('params='+params);
+      if (params['name'])
+        return params['name'];
+      else 
+        return 'param name not found';
     })
   )
+
+  // getting only 'name' parameter value, otherwise ignore
+  // param$ = this.activateRoute.queryParams.pipe(
+  //   filter(params => params['name'] != undefined),
+  //   map(params => {
+  //     console.log('params='+params);
+  //     if (params['name'])
+  //       return params['name'];
+  //     else 
+  //       return 'param name not found';
+  //   })
+  // )
+
 
   name$ = this.activateRoute.url.pipe(
     map(value => {
