@@ -1,19 +1,20 @@
 <nav class='navbar navbar-expand navbar-light bg-light'>
-  <a class='navbar-brand'>{{pageTitle$ | async}}</a>
+  <!-- <a class='navbar-brand'>{{pageTitle$ | async}}</a> -->
   <ul class='nav nav-pills'>
-    <li><a class='nav-link' routerLink='/welcome'>Home</a></li>
-    <li><a class='nav-link' routerLink='/products'>Product List</a></li>
+    <li><a class='nav-link' routerLink='/welcome'>Welcome</a></li>
+    <li><a class='nav-link' routerLink='/products'>Products</a></li>
+    <li><a class='nav-link' routerLink='/about'>About</a></li>
   </ul>
   <table>
-    <tr><td>URL: </td><td><input #name type="text" [value]="(url$ | async)" placeholder="url" /></td></tr>
-    <tr><td>Parameter:</td><td><input #name type="text" [value]="(param$ | async)" placeholder="parameter" /></td></tr>
-    <tr><td>Name:</td><td><input #name type="text" [value]="(name$ | async)" placeholder="name" /></td></tr>
+    <tr><td>URL: </td>     <td><input #url   type="text" [value]="(url$ | async)"   placeholder="url" /></td></tr>
+    <tr><td>Parameter:</td><td><input #param type="text" [value]="(param$ | async)" placeholder="parameter" /></td></tr>
+    <tr><td>Name:</td>     <td><input #name  type="text" [value]="(name$ | async)"  placeholder="name" /></td></tr>
   </table>
   <br/>
   <button (click)="btnGoWelcome()" style="background-color: green;width:120px">Open Welcome</button>
   <button (click)="btnGoWelcome('test1')">Open Welcome Param</button>
   <br/>
-  <button (click)="btnGoProducts()" style="background-color: green;width:120px">Open Products</button>
+  <button (click)="btnGoProducts()" style="background-color: darkviolet;width:120px">Open Products</button>
   <button (click)="btnGoProducts('test2')">Open Products Param</button>
   <br/>
   <button (click)="btnGoAbout()" style="width:120px">Open About</button>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ɵangular_packages_platform_browser_dynamic_testing_testing_b } from '@angular/platform-browser-dynamic/testing';
-import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, UrlSegment } from '@angular/router';
 import {
   EMPTY,
   Observable,
@@ -19,10 +19,11 @@ export class AppComponent {
 
   
   // getting current URL .. 
-  url$ = this.activatedRoute.queryParams.pipe(
-    map(() => {
-      console.log("router.url="+this.router.url); // full URL with params
-      return this.router.url.split('?')[0] ;
+  url$ = this.router.events.pipe(
+    filter((event: any) => event instanceof NavigationEnd),
+    map((event: NavigationEnd) => { 
+      //console.log('router.event.url='+event.url)
+      return JSON.stringify(event.url)
     })
   )
 
@@ -30,8 +31,8 @@ export class AppComponent {
   // geting value parameter 'name' - works
   param$ = this.activatedRoute.queryParams.pipe(
     map(params => {
-      console.log('params='+JSON.stringify(params));
-      console.log("router.url="+this.router.url);
+      //console.log('params='+JSON.stringify(params));
+      //console.log("router.url="+this.router.url);
       if (params['name'])
         return params['name'];
       else 
@@ -40,25 +41,14 @@ export class AppComponent {
   )
 
   // getting only 'name' parameter value, otherwise ignore
-  // param$ = this.activateRoute.queryParams.pipe(
-  //   filter(params => params['name'] != undefined),
-  //   map(params => {
-  //     console.log('params='+params);
-  //     if (params['name'])
-  //       return params['name'];
-  //     else 
-  //       return 'param name not found';
-  //   })
-  // )
-
-
-  name$ = this.activatedRoute.url.pipe(
-    map(value => {
-      //console.log('value ='+value);
-      return JSON.stringify(value);
-    }),
+  name$ = this.router.events.pipe(
+    filter((event: any) => event instanceof NavigationEnd && event.url === '/welcome'),
     
-  );
+    map((event)=> {
+      console.log('event='+JSON.stringify(event));
+      return '/welcome'
+    })
+  )
 
   // Logic: 
   // 1. if route /welcome or /products - continue
